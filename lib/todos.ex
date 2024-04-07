@@ -12,8 +12,7 @@ defmodule Todos do
       IO.gets("Enter the number of todos you want to add: ") |> Integer.parse()
 
       for _ <- 1..number_of_tasks do
-        task = IO.gets("Enter Task: ")
-        String.trim(task)
+        IO.gets("Enter a Task: ") |> String.trim()
       end
   end
 
@@ -23,6 +22,16 @@ defmodule Todos do
 
   def contains?(tasks, task) do
     Enum.member?(tasks, task)
+  end
+
+  def complete_task(tasks, task) do
+    if contains?(tasks, task) do
+      # execute this block
+      List.delete(tasks, task)
+    else
+      # otherwise execute this block
+      :not_found_error
+    end
   end
 
   def keyword_search(tasks, word) do
