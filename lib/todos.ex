@@ -34,6 +34,10 @@ defmodule Todos do
     end
   end
 
+  def add_new_task(tasks, task) do
+    List.insert_at(tasks, -1, task)
+  end
+
   def keyword_search(tasks, word) do
     for task <- tasks, String.contains?(task, word) do
       task
